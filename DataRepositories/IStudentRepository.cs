@@ -9,5 +9,6 @@ namespace WebApplication12.DataRepositories
     public interface IStudentRepository
     {
         Student GetStudent(int ID);
+        IEnumerable<Student> GetAllStudents();
     }
 }

@@ -17,6 +17,12 @@ namespace WebApplication12.DataRepositories
                 new Student(){ID=3,Name="王五",Major="网工",Email="wangwu@foxmail.com"}
             };
         }
+
+        public IEnumerable<Student> GetAllStudents()
+        {
+            return _studentList;
+        }
+
         public Student GetStudent(int ID)
         {
             return _studentList.FirstOrDefault(a => a.ID == ID);

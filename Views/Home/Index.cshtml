@@ -1,0 +1,30 @@
+﻿@model IEnumerable<WebApplication12.Models.Student>
+@{ ViewBag.Title = "学生列表";}
+<html>
+    <head>
+            <title>学生详细信息</title>
+    </head>
+    <body>
+        <table align="center" border="1" cellpadding="0" cellspacing="0" width="500" height="250">
+            <thead >
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Major</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var student in Model)
+                {
+                    <tr>
+                        <td >@student.ID</td>
+                        <td>@student.Name</td>
+                        <td>@student.Email</td>
+                        <td>@student.Major</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </body>
+</html>

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApplication12.DataRepositories;
 using WebApplication12.Models;
+using WebApplication12.ViewModels;
 
 namespace WebApplication12.Controllers
 {
@@ -17,15 +18,37 @@ namespace WebApplication12.Controllers
             _studentRepository = studentRepository;
         }
 
+        //返回学生的信息
+        public ViewResult Index()
+        {
+            //查询所有的学生信息
+            var model = _studentRepository.GetAllStudents();
+            //将学生列表传递到视图
+            return View(model);
+        }
 
 
         public ViewResult Details()
         {
-            Student model = _studentRepository.GetStudent(1);
-            ViewBag.PageTitle = "学生详情";
-            
-            return View(model);
+            //实例化HomeDetailsViewModel并存储Student详细信息和PageTitle
+            HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
+            {
+                Student = _studentRepository.GetStudent(1),
+                PageTitle = "学生详情"
+            };
+            //将ViewModel对象传递给View()方法
+            return View(homeDetailsViewModel);
         }
+
+
+
+        //public ViewResult Details()
+        //{
+        //    Student model = _studentRepository.GetStudent(1);
+        //    ViewBag.PageTitle = "学生详情";
+            
+        //    return View(model);
+        //}
 
 
 

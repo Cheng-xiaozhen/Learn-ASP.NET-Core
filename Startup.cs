@@ -31,7 +31,7 @@ namespace WebApplication12
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseStaticFiles();
+            app.UseStaticFiles();
 
             app.UseMvcWithDefaultRoute();
         }

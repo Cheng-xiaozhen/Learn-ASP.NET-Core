@@ -1,18 +1,18 @@
-﻿@model WebApplication12.Models.Student
-<html>
-    <head>
-            <title>Details</title>
-    </head>
-    <body>
-        <h3>@ViewBag.PageTitle</h3>
+﻿@model WebApplication12.ViewModels.HomeDetailsViewModel
+@{ 
+    ViewBag.Title = "Student Details";
+}
+
+        <h3>@Model.PageTitle</h3>
         <div>
-            姓名：@Model.Name
+            姓名：@Model.Student.Name
         </div>
         <div>
-            邮箱：@Model.Email
+            邮箱：@Model.Student.Email
         </div>
         <div>
-            主修科目：@Model.Major
+            主修科目：@Model.Student.Major
         </div>
-    </body>
-</html>
+@section Scripts{ 
+<script src="/js/JavaScript.js"></script>
+}
