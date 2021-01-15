@@ -18,7 +18,7 @@ namespace WebApplication12
       
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews(a => a.EnableEndpointRouting = false).AddXmlSerializerFormatters();
+            services.AddControllersWithViews().AddXmlSerializerFormatters();
 
             services.AddSingleton<IStudentRepository, StudentRepository>();
         }
@@ -33,7 +33,18 @@ namespace WebApplication12
 
             app.UseStaticFiles();
 
-            app.UseMvcWithDefaultRoute();
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                        name: "default",
+                        pattern: "{controller=Home}/{action=Index}/{id?}"
+                    );
+            });
+
+            //app.UseMvc();
+
+            //app.UseMvcWithDefaultRoute();
         }
     }
 }

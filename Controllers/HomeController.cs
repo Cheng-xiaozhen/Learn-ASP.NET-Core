@@ -9,31 +9,38 @@ using WebApplication12.ViewModels;
 
 namespace WebApplication12.Controllers
 {
-    public class HomeController:Controller
+    [Route("Home")]
+    public class HomeController : Controller
     {
         private readonly IStudentRepository _studentRepository;
 
+        //使用构造函数注入的方式注入IStudentRepository
         public HomeController(IStudentRepository studentRepository)
         {
             _studentRepository = studentRepository;
         }
 
+        [Route("/")]
+        [Route("")]
+        [Route("Index")]
         //返回学生的信息
         public ViewResult Index()
         {
             //查询所有的学生信息
-            var model = _studentRepository.GetAllStudents();
+            IEnumerable<Student> students = _studentRepository.GetAllStudents();
             //将学生列表传递到视图
-            return View(model);
+            return View(students);
         }
 
 
-        public ViewResult Details()
+        //?使路由模板中的id参数为可选，如果要让它为必选，删除？即可
+        [Route("Details/{id?}")]
+        public ViewResult Details(int id)
         {
             //实例化HomeDetailsViewModel并存储Student详细信息和PageTitle
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
-                Student = _studentRepository.GetStudent(1),
+                Student = _studentRepository.GetStudent(id),
                 PageTitle = "学生详情"
             };
             //将ViewModel对象传递给View()方法
