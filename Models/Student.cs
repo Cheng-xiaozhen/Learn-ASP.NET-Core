@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace WebApplication12.Models
 {
     public class Student
@@ -14,7 +13,7 @@ namespace WebApplication12.Models
         /// <summary>
         /// 主修科目
         /// </summary>
-        public string Major { get; set; }
+        public MajorEnum Major { get; set; }
 
         public string Email { get; set; }
     }

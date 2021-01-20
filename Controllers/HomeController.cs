@@ -9,7 +9,7 @@ using WebApplication12.ViewModels;
 
 namespace WebApplication12.Controllers
 {
-    [Route("Home")]
+    
     public class HomeController : Controller
     {
         private readonly IStudentRepository _studentRepository;
@@ -20,9 +20,13 @@ namespace WebApplication12.Controllers
             _studentRepository = studentRepository;
         }
 
-        [Route("/")]
-        [Route("")]
-        [Route("Index")]
+
+
+        public IActionResult  Create()
+        {
+            return View();
+        }
+      
         //返回学生的信息
         public ViewResult Index()
         {
@@ -34,13 +38,13 @@ namespace WebApplication12.Controllers
 
 
         //?使路由模板中的id参数为可选，如果要让它为必选，删除？即可
-        [Route("Details/{id?}")]
-        public ViewResult Details(int id)
+      
+        public ViewResult Details(int? id)
         {
             //实例化HomeDetailsViewModel并存储Student详细信息和PageTitle
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
-                Student = _studentRepository.GetStudent(id),
+                Student = _studentRepository.GetStudent(id??1),
                 PageTitle = "学生详情"
             };
             //将ViewModel对象传递给View()方法
