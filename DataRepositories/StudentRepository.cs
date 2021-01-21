@@ -18,6 +18,13 @@ namespace WebApplication12.DataRepositories
             };
         }
 
+        public Student Add(Student student)
+        {
+            student.ID = _studentList.Max(s => s.ID) + 1;
+            _studentList.Add(student);
+            return student;
+        }
+
         public IEnumerable<Student> GetAllStudents()
         {
             return _studentList;

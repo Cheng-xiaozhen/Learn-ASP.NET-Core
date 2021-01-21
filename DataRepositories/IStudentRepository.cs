@@ -10,5 +10,6 @@ namespace WebApplication12.DataRepositories
     {
         Student GetStudent(int ID);
         IEnumerable<Student> GetAllStudents();
+        Student Add(Student student);
     }
 }

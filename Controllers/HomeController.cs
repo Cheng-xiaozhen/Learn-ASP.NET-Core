@@ -20,13 +20,26 @@ namespace WebApplication12.Controllers
             _studentRepository = studentRepository;
         }
 
-
-
-        public IActionResult  Create()
+        [HttpGet]
+        public ViewResult Create()
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult  Create(Student student)
+        {
+           if (ModelState.IsValid)
+            {
+                Student newStudent = _studentRepository.Add(student);
+                return RedirectToAction("Details", new { id = newStudent.ID });
+            }
+            return View();
+        }
       
+       
+
+
         //返回学生的信息
         public ViewResult Index()
         {
