@@ -21,7 +21,7 @@ namespace WebApplication12.Controllers
         }
 
         [HttpGet]
-        public ViewResult Create()
+        public IActionResult Create()
         {
             return View();
         }
@@ -32,7 +32,7 @@ namespace WebApplication12.Controllers
            if (ModelState.IsValid)
             {
                 Student newStudent = _studentRepository.Add(student);
-                return RedirectToAction("Details", new { id = newStudent.ID });
+                //return RedirectToAction("Details", new { id = newStudent.ID });
             }
             return View();
         }

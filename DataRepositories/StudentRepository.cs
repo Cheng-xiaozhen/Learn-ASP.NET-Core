@@ -12,9 +12,9 @@ namespace WebApplication12.DataRepositories
         public StudentRepository()
         {
             _studentList = new List<Student>() {
-                new Student(){ID=1,Name="张三",Major=MajorEnum.FirstGrade,Email="zhangsan@qq.com"},
-                new Student(){ID=2,Name="李四",Major=MajorEnum.SecondGrade,Email="lisi@outlook.com"},
-                new Student(){ID=3,Name="王五",Major=MajorEnum.GradeThree,Email="wangwu@foxmail.com"}
+                new Student(){ID=1,Name="张三",Major=MajorEnum.ComputerScience,Email="zhangsan@qq.com"},
+                new Student(){ID=2,Name="李四",Major=MajorEnum.InformationSecurity,Email="lisi@outlook.com"},
+                new Student(){ID=3,Name="王五",Major=MajorEnum.NetworkEngineering,Email="wangwu@foxmail.com"}
             };
         }
 
