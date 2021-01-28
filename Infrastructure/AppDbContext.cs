@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
+using WebApplication12.Models;
+
 namespace WebApplication12.Infrastructure
 {
     public class AppDbContext:DbContext
@@ -13,5 +15,8 @@ namespace WebApplication12.Infrastructure
         {
 
         }
+
+        public DbSet<Student> Students { get; set; }
+
     }
 }
