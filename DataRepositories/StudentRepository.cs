@@ -25,14 +25,36 @@ namespace WebApplication12.DataRepositories
             return student;
         }
 
+        public Student Delete(int ID)
+        {
+            Student student = _studentList.FirstOrDefault(s => s.ID == ID);
+            if (student!=null)
+            {
+                _studentList.Remove(student);
+            }
+            return student;
+        }
+
         public IEnumerable<Student> GetAllStudents()
         {
             return _studentList;
         }
 
-        public Student GetStudent(int ID)
+        public Student GetStudentByID(int ID)
         {
             return _studentList.FirstOrDefault(a => a.ID == ID);
+        }
+
+        public Student Update(Student updateStudent)
+        {
+            Student student = _studentList.FirstOrDefault(s => s.ID == updateStudent.ID);
+            if (student!=null)
+            {
+                student.Name = updateStudent.Name;
+                student.Major = updateStudent.Major;
+                student.Email = updateStudent.Email;
+            }
+            return student;
         }
     }
 }
